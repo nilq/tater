@@ -139,7 +139,7 @@ impl Value {
             Value::Boolvec(ref vec) => vec.len(),
             Value::Bignum(ref num) => num.bit_length(),
             Value::Position(ref ptr, rev) => {
-                let mut pos = ptr.get_ptr_position(garden);
+                let mut pos = ptr.get_ptr_position(garden) ;
 				if rev {
 					pos += ptr.get_ptr_size(garden);
 				}
