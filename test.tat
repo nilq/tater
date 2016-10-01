@@ -1,0 +1,18 @@
+put 512
+
+goto start
+
+? Hello, I'm a comment!
+
+#let rcx [0, 8]
+#let rbx [8, 8]
+
+@printbinary
+  extern numprint: [rbx]
+  add rbx: rcx: 1
+
+@start
+  extern print: "\n"
+
+  move rcx: b11001100
+  move rcx: <rcx

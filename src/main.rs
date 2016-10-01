@@ -14,23 +14,25 @@ fn load_file(tater: &mut Tater, path: &str) {
     let file = File::open(path).unwrap();
     let buffer = BufReader::new(&file);
 
-    let mut line = 0;
+    let mut line: usize = 0usize;
 
-    for line in buffer.lines() {
-        let l: String = line.unwrap();
-        line += 1;
+    for ln in buffer.lines() {
+        let l: String = ln.unwrap();
+
+        line += 1usize;
+
         tater.parse_line(&l, line, Some(path.to_string()));
     }
 }
 
 enum Req {
-    Yes, Maybe, No
+    Yes, Maybe, No,
 }
 
 struct ArgType {
     name: String,
     short: Option<String>,
-    arg: Req
+    arg: Req,
 }
 
 fn main() {
@@ -62,8 +64,8 @@ fn main() {
     let mut current_arg_name: String = "file".to_string();
     let mut is_first: bool = true;
 
-    for e in env::args().collect::<Vec<String>() {
-        if if_first {
+    for e in env::args().collect::<Vec<String>>() {
+        if is_first {
             is_first = false;
             continue;
         }
@@ -78,9 +80,9 @@ fn main() {
             }
 
             current_arg_name = e.to_string();
-            args.insert(current_arg_name.clone(), "".to_string);
+            args.insert(current_arg_name.clone(), "".to_string());
 
-        } else if e.len() >= 1 && &element[0 .. 1] == "-" {
+        } else if e.len() >= 1 && &e[0 .. 1] == "-" {
             let e = &e[1 ..];
             let mut arg_name = "".to_string();
 
