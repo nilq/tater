@@ -1,2 +1,6 @@
 # tater
-a toy programming language build in Rust
+A toy programming language build in Rust, inspired by Assembler.
+
+---
+**[STATUS]** Currently not at all working. Will be fixed.
+---
