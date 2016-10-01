@@ -1,7 +1,10 @@
 [package]
-name = "Tater"
-version = "0.1.0"
-authors = ["Lord Niels N. Horn <i.am@nilq.dk>"]
+name        = "Tater"
+version     = "0.1.0"
+authors     = ["Lord Niels N. Horn <i.am@nilq.dk>"]
 description = "An interpreted programming language"
 
 [dependencies]
+regex    = "*"
+time     = "*"
+rust-gmp = "0.3.0"
