@@ -3,7 +3,7 @@ extern crate gmp;
 use super::value::Value;
 
 const COMMENT_CHAR: char = '?';
-const ARGUMENT_CHAR: char = ':';
+const ARGUMENT_CHAR: char = ';';
 
 use super::garden::Garden;
 use super::instruction::{Instruction, create_instruction};
