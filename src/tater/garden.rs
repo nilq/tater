@@ -13,7 +13,7 @@ pub struct Garden {
     pub instruction: usize,
     pub validity: bool,
     pub input_string: String,
-    pub rand_state: gmp::rand::Randstate,
+    pub rand_state: gmp::rand::RandState,
 }
 
 #[allow(dead_code)]
@@ -61,6 +61,15 @@ impl Garden {
 
     pub fn set_bits_boolvec(&mut self, num: &[bool], pos: usize, len: usize) {
         for i in 0 .. len {
+            self.stack[pos + i] = match i < num.len() {
+                true => num[i],
+                false => false,
+            }
+        }
+    }
+
+    pub fn set_bits_usize(&mut self, num: usize, pos: usize, len: usize) {
+        for i in 0 .. len {
             self.stack[pos + i] = match i < size_of::<usize>() * 8 {
                 true => num & (1 << i) != 0,
                 false => false,
@@ -72,7 +81,7 @@ impl Garden {
         self.set_bits_boolvec(&bignum_to_boolvec(num), pos, len);
     }
 
-    pub call(&mut self, tater: &Tater, name: &str) {
+    pub fn call(&mut self, tater: &Tater, name: &str) {
         self.call_stack.push(self.instruction);
         self.instruction = *tater.labels.get(name).expect(
             format!("No such label of name {}!", name).as_ref()
@@ -80,7 +89,7 @@ impl Garden {
     }
 
     pub fn ret(&mut self) {
-        let pos = self.call_stack.pop().expect("Attempt to return on empty 'call_stack'!")
+        let pos = self.call_stack.pop().expect("Attempt to return on empty 'call_stack'!");
         self.instruction = pos;
     }
 
