@@ -1,0 +1,7 @@
+[package]
+name = "Tater"
+version = "0.1.0"
+authors = ["Lord Niels N. Horn <i.am@nilq.dk>"]
+description = "An interpreted programming language"
+
+[dependencies]
