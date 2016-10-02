@@ -225,7 +225,7 @@ impl Tater {
                     }
                 },
                 name => err.throw(ErrorType::NonExistent {
-                    typename: "macro".to_string(),
+                    type_name: "macro".to_string(),
                     value: name.to_string()
                 })
             }

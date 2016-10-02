@@ -2,7 +2,7 @@
 extern crate gmp;
 
 pub fn remove_comments(val: &mut String, comment: char) {
-    match value.find(comment) {
+    match val.find(comment) {
         Some(pos) => {
             val.truncate(pos);
         },
