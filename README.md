@@ -16,7 +16,7 @@ pop 512  ? pop 512 bits of the stack
 
 extern print; "\nHello world!"
 ```
-run ...
+
 `cargo run -- --file test.tat`
 
 stdout:
