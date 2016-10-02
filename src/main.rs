@@ -119,8 +119,11 @@ fn main() {
     if args.contains_key("help") {
         println!("{}",
             "
+            [The Tater Language]
+
             Usage:
                 tater --file <filename>
+
             Options:
                 --print-stack <bits> [prints stack as a sequence of bytes]
                 --print-parsed       [prints each line as it's are parsed]

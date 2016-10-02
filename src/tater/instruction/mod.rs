@@ -3,6 +3,7 @@ use super::tater::Tater;
 use super::error::*;
 
 mod mem;
+mod sys;
 
 pub trait Instruction {
     fn new(name: &str, arguments: &[&str], err: &Error) -> Box<Instruction> where Self:Sized;
@@ -19,10 +20,11 @@ pub fn create_instruction(name: &str, arguments: &[&str], tater: &Tater, err: &E
         "pop" => mem::Pop::new(name, arguments, err),
         "move" => mem::Move::new(name, arguments, err),
 
-        /*"call" => sys::Call::new(name, arguments, err),
+        "call" => sys::Call::new(name, arguments, err),
         "return" => sys::Return::new(name, arguments, err),
-        "extern" => sys::Ext::new(name, arguments, err),
+        "extern" => sys::Extern::new(name, arguments, err),
 
+        /*
         "and" => logic::And::new(name, arguments, err),
         "or"  => logic::Or::new(name, arguments, err),
         "xor" => logic::Xor::new(name, arguments, err),
