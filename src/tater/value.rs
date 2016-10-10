@@ -162,8 +162,6 @@ impl Value {
     fn create(value: &str, err: &Error) -> Option<Value> {
         let value = value.trim();
 
-        println!("Parsing: {}", value);
-
         let re_ptr = Regex::new(r"^\[(.*?)\]$").unwrap();
 
         if re_ptr.is_match(value) {

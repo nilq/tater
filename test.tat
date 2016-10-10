@@ -3,4 +3,4 @@
 put 1024 ? push 1024 bits onto the stack
 pop 512  ? pop 512 bits of the stack
 
-extern print; "\nHello world!"
+extern print; "\nHello world!\n\n"
